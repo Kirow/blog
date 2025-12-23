@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	let { data } = $props();
 	
 	let searchTerm = $state('');
@@ -28,7 +29,7 @@
 <ul>
 	{#each filteredPosts as post}
 		<li>
-			<a href="/blog/{post.slug}">{post.title}</a>
+			<a href="{base}/posts/{post.slug}">{post.title}</a>
 			<time>{post.date}</time>
 			<div>
 				{#each post.tags as tag}
