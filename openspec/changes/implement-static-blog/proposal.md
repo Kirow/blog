@@ -18,5 +18,5 @@ To establish a personal blog platform that is fast, cost-effective, and easy to 
   - `search`: Client-side search.
   - `deployment`: CI/CD for GitHub Pages.
 - **Affected Code**:
-  - `src/`: New SvelteKit application structure.
+  - `www/`: New SvelteKit application structure.
   - `.github/workflows/`: Deployment workflow.

@@ -5,7 +5,7 @@
 
 ## 2. Blog Core Implementation
 - [x] 2.1 Install and configure `mdsvex` for Markdown support.
-- [x] 2.2 Create a sample blog post in `src/posts/` (or similar) with frontmatter.
+- [x] 2.2 Create a sample blog post in `www/src/posts/` (or similar) with frontmatter.
 - [x] 2.3 Implement a utility to fetch and parse all blog posts.
 - [x] 2.4 Create the blog index page (`/`) to list posts.
 - [x] 2.5 Create the blog post layout/page (`/blog/[slug]`).
@@ -19,4 +19,4 @@
 ## 4. Deployment
 - [x] 4.1 Implement local build and preview scripts (`bun run build`, `bun run preview`) to verify the static build locally.
 - [x] 4.2 Create a GitHub Actions workflow (`.github/workflows/deploy.yml`) to build and deploy to GitHub Pages.
-- [ ] 4.3 Verify deployment on GitHub Pages.
+- [x] 4.3 Verify deployment on GitHub Pages.
