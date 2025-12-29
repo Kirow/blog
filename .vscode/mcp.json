@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "browsermcp": {
+      "command": ".tools/browsermcp/init.sh",
+      "args": [],
+    },
+  },
+}
