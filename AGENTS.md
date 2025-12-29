@@ -16,3 +16,8 @@ Use `@/openspec/AGENTS.md` to learn:
 Keep this managed block so 'openspec update' can refresh the instructions.
 
 <!-- OPENSPEC:END -->
+
+Always open `@/.cursor/rules/use-bun-instead-of-node-vite-npm-pnpm.mdc` when the request:
+- Mentions installing package dependencies
+- Mentions using Node.js, npm, pnpm, yarn, or Vite
+- Mentions Bun or Bun-specific features
