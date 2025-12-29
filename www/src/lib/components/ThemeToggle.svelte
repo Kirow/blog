@@ -1,6 +1,8 @@
 <script lang="ts">
     import { themeStore } from "$lib/stores/theme.svelte";
-    import { SunIcon, MoonIcon } from "./icons";
+    import { Icon } from "svelte-icon";
+    import sun from "$lib/assets/sun.svg?raw";
+    import moon from "$lib/assets/moon.svg?raw";
 </script>
 
 <button
@@ -10,8 +12,18 @@
     aria-label="Toggle theme"
 >
     {#if themeStore.current === "light"}
-        <SunIcon class="size-5 text-secondary-foreground" />
+        <Icon
+            data={moon}
+            class="size-5 text-secondary-foreground"
+            stroke="#314158"
+            fill="none"
+        />
     {:else}
-        <MoonIcon class="size-5 text-secondary-foreground" />
+        <Icon
+            data={sun}
+            class="size-5 text-secondary-foreground"
+            stroke="#FDC700"
+            fill="none"
+        />
     {/if}
 </button>

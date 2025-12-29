@@ -1,7 +1,9 @@
 <script lang="ts">
     import { base } from "$app/paths";
     import type { Post } from "$lib/posts";
-    import { CalendarIcon } from "./icons";
+    import { Icon } from "svelte-icon";
+    import calendar from "$lib/assets/calendar.svg?raw";
+    import { themeStore } from "$lib/stores/theme.svelte";
 
     type Props = {
         post: Post;
@@ -45,7 +47,14 @@
     <div class="flex items-center justify-between">
         <div class="flex items-center gap-4">
             <div class="flex items-center gap-1.5">
-                <CalendarIcon class="w-4 h-4 text-muted-foreground" />
+                <Icon
+                    data={calendar}
+                    class="w-4 h-4"
+                    stroke={themeStore.current === "light"
+                        ? "#62748E"
+                        : "#71717B"}
+                    fill="none"
+                />
                 <time
                     class="font-normal text-[14px] leading-5 text-muted-foreground tracking-[-0.15px]"
                     datetime={post.date}

@@ -1,5 +1,8 @@
 <script lang="ts">
-    import { SearchIcon, TagIcon } from "./icons";
+    import { Icon } from "svelte-icon";
+    import search from "$lib/assets/search.svg?raw";
+    import tag from "$lib/assets/tag.svg?raw";
+    import { themeStore } from "$lib/stores/theme.svelte";
 
     type Props = {
         searchTerm: string;
@@ -26,7 +29,14 @@
         </h3>
         <div class="relative">
             <div class="absolute left-3 top-1/2 -translate-y-1/2">
-                <SearchIcon class="size-4 text-muted-foreground" />
+                <Icon
+                    data={search}
+                    class="size-4 text-muted-foreground"
+                    stroke={themeStore.current === "light"
+                        ? "#90A1B9"
+                        : "#71717B"}
+                    fill="none"
+                />
             </div>
             <input
                 type="text"
@@ -41,7 +51,12 @@
     <!-- Tags Section -->
     <div class="bg-card border border-border rounded-[10px] p-4.25">
         <div class="flex items-center gap-2 mb-3">
-            <TagIcon class="size-4 text-foreground" />
+            <Icon
+                data={tag}
+                class="size-4 text-foreground"
+                stroke={themeStore.current === "light" ? "#45556C" : "#9F9FA9"}
+                fill="none"
+            />
             <h3
                 class="text-lg font-medium leading-6.75 text-foreground tracking-[-0.44px]"
             >
