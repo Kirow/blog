@@ -10,8 +10,6 @@ description: Learn how to build and deploy a modern blog using SvelteKit and Bun
 reading-time: 4 min
 ---
 
-# Create a GitHub Pages Blog with Bun and SvelteKit
-
 In this guide, we'll create a fast, modern blog using SvelteKit, Bun, and GitHub Pages. This combination gives you an excellent developer experience with lightning-fast builds and deployments.
 
 ## Prerequisites

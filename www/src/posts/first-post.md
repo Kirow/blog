@@ -8,6 +8,4 @@ description: This is my first blog post using SvelteKit and Bun. Brief hello wor
 reading-time: 1 min
 ---
 
-# Hello World
-
 This is my first blog post using SvelteKit and Bun.
