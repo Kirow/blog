@@ -3,6 +3,8 @@ export type Post = {
 	date: string;
 	tags: string[];
 	slug: string;
+	description: string;
+	readingTime: string;
 };
 
 export async function getPosts() {
@@ -15,10 +17,20 @@ export async function getPosts() {
 			throw new Error(`File at ${path} is missing metadata`);
 		}
 		
-		const metadata = (file as any).metadata as Omit<Post, 'slug'>;
+		const metadata = (file as any).metadata as {
+			title: string;
+			date: string;
+			tags: string[];
+			description: string;
+			'reading-time': string;
+		};
 		
 		return { 
-			...metadata, 
+			title: metadata.title,
+			date: metadata.date,
+			tags: metadata.tags,
+			description: metadata.description,
+			readingTime: metadata['reading-time'],
 			slug: slug || '' 
 		} satisfies Post;
 	});

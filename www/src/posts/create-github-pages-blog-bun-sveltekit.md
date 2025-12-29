@@ -6,6 +6,8 @@ tags:
   - bun
   - github-pages
   - tutorial
+description: Learn how to build and deploy a modern blog using SvelteKit and Bun on GitHub Pages. This tutorial covers project setup, static adapter, prerendering, and GitHub Actions for fast, reliable static site deployment.
+reading-time: 4 min
 ---
 
 # Create a GitHub Pages Blog with Bun and SvelteKit

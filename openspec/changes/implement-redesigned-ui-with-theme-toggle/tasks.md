@@ -1,7 +1,7 @@
 ## 1. Setup and Configuration
-- [ ] 1.1 Install shadcn-svelte CLI and initialize project
-- [ ] 1.2 Install mdsvex for markdown preprocessing
-- [ ] 1.3 Configure Tailwind CSS with shadcn-svelte
+- [x] 1.1 Install shadcn-svelte CLI and initialize project
+- [x] 1.2 Install mdsvex for markdown preprocessing
+- [x] 1.3 Configure Tailwind CSS with shadcn-svelte
 - [ ] 1.4 Add theme toggle dependencies (theme provider)
 - [ ] 1.5 Configure i18n for EN/UA language support
 - [ ] 1.6 Set up responsive design breakpoints
