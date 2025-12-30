@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
 
     type NavItem = {
         label: string;
@@ -8,14 +8,17 @@
     };
 
     const navItems: NavItem[] = [
-        { label: "Home", href: `${base}/` },
-        { label: "About", href: `${base}/about` },
-        { label: "Contacts", href: `${base}/contacts` },
+        { label: "Home", href: resolve("/") },
+        { label: "About", href: resolve("/about") },
+        { label: "Contacts", href: resolve("/contacts") },
     ];
 
     function isActive(href: string, currentPath: string): boolean {
-        if (href === `${base}/`) {
-            return currentPath === `${base}/` || currentPath === base;
+        if (href === resolve("/")) {
+            return (
+                currentPath === resolve("/") ||
+                currentPath === resolve("/").replace(/\/$/, "")
+            );
         }
         return currentPath.startsWith(href);
     }

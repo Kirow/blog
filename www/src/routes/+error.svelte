@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from "$app/state";
+    import { resolve } from "$app/paths";
     import { Icon } from "svelte-icon";
     import warningIcon from "$lib/assets/404-warning.svg?raw";
     import homeIcon from "$lib/assets/home.svg?raw";
@@ -51,7 +52,7 @@
 
     <!-- Button -->
     <a
-        href="/"
+        href={resolve("/")}
         class="bg-primary text-primary-foreground flex h-12 items-center gap-2 rounded-lg px-6 tracking-[-0.31px] transition-opacity hover:opacity-90"
     >
         <Icon data={homeIcon} fill="none" stroke="var(--primary-foreground)" />

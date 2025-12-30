@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
     import type { Post } from "$lib/posts";
     import { Icon } from "svelte-icon";
     import calendar from "$lib/assets/calendar.svg?raw";
@@ -29,7 +29,7 @@
 </script>
 
 <a
-    href="{base}/posts/{post.slug}"
+    href={resolve(`/posts/${post.slug}`)}
     class="block bg-card border border-border rounded-[10px] px-6.25 pt-6.25 pb-6.5 hover:border-muted-foreground/30 transition-colors"
 >
     <h2
