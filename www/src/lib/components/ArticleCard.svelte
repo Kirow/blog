@@ -39,7 +39,7 @@
                 {post.title}
             </h2>
 
-            <p class="text-body text-muted-foreground mb-2 line-clamp-2">
+            <p class="text-body text-muted-foreground mb-2">
                 {post.description}
             </p>
 

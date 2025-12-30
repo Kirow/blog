@@ -41,7 +41,7 @@
                                 href={item.href}
                                 variant={active ? "default" : "ghost"}
                                 class="w-full justify-start text-body {active
-                                    ? 'bg-accent text-foreground font-medium hover:bg-accent/90'
+                                    ? 'bg-accent dark:bg-sidebar-accent dark:text-sidebar-accent-foreground text-foreground font-medium hover:bg-accent/90 dark:hover:bg-sidebar-accent'
                                     : 'text-muted-foreground hover:text-foreground'}"
                             >
                                 {item.label}
