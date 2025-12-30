@@ -1,14 +1,15 @@
 <script lang="ts">
     import { themeStore } from "$lib/stores/theme.svelte";
+    import { Button } from "$lib/components/ui/button";
     import { Icon } from "svelte-icon";
     import sun from "$lib/assets/sun.svg?raw";
     import moon from "$lib/assets/moon.svg?raw";
 </script>
 
-<button
-    type="button"
+<Button
+    variant="secondary"
+    size="icon"
     onclick={() => themeStore.toggle()}
-    class="flex items-center justify-center size-9 rounded-[10px] bg-secondary hover:bg-secondary/80 transition-colors"
     aria-label="Toggle theme"
 >
     {#if themeStore.current === "light"}
@@ -26,4 +27,4 @@
             fill="none"
         />
     {/if}
-</button>
+</Button>

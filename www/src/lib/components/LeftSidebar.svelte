@@ -1,6 +1,8 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { resolve } from "$app/paths";
+    import { Card, CardContent } from "$lib/components/ui/card";
+    import { Button } from "$lib/components/ui/button";
 
     type NavItem = {
         label: string;
@@ -25,22 +27,29 @@
 </script>
 
 <aside class="w-60 shrink-0">
-    <nav class="bg-card border border-border rounded-[10px] p-4.25">
-        <ul class="flex flex-col gap-2">
-            {#each navItems as item}
-                {@const active = isActive(item.href, $page.url.pathname)}
-                <li>
-                    <a
-                        href={item.href}
-                        class="block px-4 py-2 rounded-[10px] text-base leading-6 tracking-[-0.31px] transition-colors
-							{active
-                            ? 'bg-accent font-medium text-foreground'
-                            : 'text-muted-foreground hover:bg-accent/50 hover:text-foreground'}"
-                    >
-                        {item.label}
-                    </a>
-                </li>
-            {/each}
-        </ul>
-    </nav>
+    <Card class="rounded-[10px] py-0 gap-0">
+        <CardContent class="p-4-25">
+            <nav>
+                <ul class="flex flex-col gap-2">
+                    {#each navItems as item}
+                        {@const active = isActive(
+                            item.href,
+                            $page.url.pathname,
+                        )}
+                        <li>
+                            <Button
+                                href={item.href}
+                                variant={active ? "default" : "ghost"}
+                                class="w-full justify-start text-body {active
+                                    ? 'bg-accent text-foreground font-medium hover:bg-accent/90'
+                                    : 'text-muted-foreground hover:text-foreground'}"
+                            >
+                                {item.label}
+                            </Button>
+                        </li>
+                    {/each}
+                </ul>
+            </nav>
+        </CardContent>
+    </Card>
 </aside>

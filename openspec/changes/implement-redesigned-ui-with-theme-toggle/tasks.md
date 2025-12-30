@@ -2,17 +2,17 @@
 - [x] 1.1 Install shadcn-svelte CLI and initialize project
 - [x] 1.2 Install mdsvex for markdown preprocessing
 - [x] 1.3 Configure Tailwind CSS with shadcn-svelte
-- [ ] 1.4 Add theme toggle dependencies (theme provider)
+- [x] 1.4 Add theme toggle dependencies (theme provider)
 - [ ] 1.5 Configure i18n for EN/UA language support
 - [ ] 1.6 Set up responsive design breakpoints
 
 ## 2. Design System Implementation
-- [ ] 2.1 Create color palette for light and dark themes
-- [ ] 2.2 Define typography scale and spacing tokens
-- [ ] 2.3 Configure shadcn-svelte components with custom theme
-- [ ] 2.4 Create base layout components (Header, Footer, Sidebar)
-- [ ] 2.5 Implement theme provider and theme context
-- [ ] 2.6 Add theme toggle button component
+- [x] 2.1 Create color palette for light and dark themes
+- [x] 2.2 Define typography scale and spacing tokens
+- [x] 2.3 Configure shadcn-svelte components with custom theme
+- [x] 2.4 Create base layout components (Header, Footer, Sidebar)
+- [x] 2.5 Implement theme provider and theme context
+- [x] 2.6 Add theme toggle button component
 
 ## 3. UI Components from Figma
 - [ ] 3.1 Implement Header with logo, language toggle, and theme toggle

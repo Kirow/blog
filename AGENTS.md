@@ -59,3 +59,9 @@ $effect(() => {
   console.log('count changed:', count);
 });
 ```
+
+## Tailwind CSS v4
+
+- Use **dashes** for decimal spacing: `px-4-25` not `px-4.25`
+- Custom tokens defined in `www/src/routes/layout.css` (`--spacing-*`)
+- Use `w-sidebar-right` instead of arbitrary widths like `w-70`

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { browser } from "$app/environment";
+    import { Button } from "$lib/components/ui/button";
 
     type Language = "EN" | "UA";
 
@@ -20,13 +21,11 @@
     }
 </script>
 
-<button
-    type="button"
+<Button
+    variant="secondary"
+    size="sm"
     onclick={toggleLanguage}
-    class="flex items-center justify-center h-8 px-3 rounded-[10px] bg-secondary hover:bg-secondary/80 transition-colors"
     aria-label="Toggle language"
 >
-    <span class="text-sm font-medium text-secondary-foreground">
-        {currentLang}
-    </span>
-</button>
+    {currentLang}
+</Button>

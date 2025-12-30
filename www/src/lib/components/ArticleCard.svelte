@@ -4,6 +4,8 @@
     import { Icon } from "svelte-icon";
     import calendar from "$lib/assets/calendar.svg?raw";
     import { themeStore } from "$lib/stores/theme.svelte";
+    import { Card, CardContent } from "$lib/components/ui/card";
+    import { Badge } from "$lib/components/ui/badge";
 
     type Props = {
         post: Post;
@@ -28,58 +30,59 @@
     }
 </script>
 
-<a
-    href={resolve(`/posts/${post.slug}`)}
-    class="block bg-card border border-border rounded-[10px] px-6.25 pt-6.25 pb-6.5 hover:border-muted-foreground/30 transition-colors"
->
-    <h2
-        class="font-medium text-[20px] leading-7.5 text-foreground tracking-[-0.45px] mb-2 line-clamp-1"
+<a href={resolve(`/posts/${post.slug}`)} class="block group">
+    <Card
+        class="rounded-[10px] py-0 gap-0 hover:border-muted-foreground/30 transition-colors"
     >
-        {post.title}
-    </h2>
+        <CardContent class="px-6-25 pt-6-25 pb-6-5">
+            <h2 class="text-heading-2 text-foreground mb-2 line-clamp-1">
+                {post.title}
+            </h2>
 
-    <p
-        class="font-normal text-[16px] leading-6 text-muted-foreground tracking-[-0.31px] mb-2 line-clamp-2"
-    >
-        {post.description}
-    </p>
+            <p class="text-body text-muted-foreground mb-2 line-clamp-2">
+                {post.description}
+            </p>
 
-    <div class="flex items-center justify-between">
-        <div class="flex items-center gap-4">
-            <div class="flex items-center gap-1.5">
-                <Icon
-                    data={calendar}
-                    class="w-4 h-4"
-                    stroke={themeStore.current === "light"
-                        ? "#62748E"
-                        : "#71717B"}
-                    fill="none"
-                />
-                <time
-                    class="font-normal text-[14px] leading-5 text-muted-foreground tracking-[-0.15px]"
-                    datetime={post.date}
-                >
-                    {formatDate(post.date)}
-                </time>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-1.5">
+                        <Icon
+                            data={calendar}
+                            class="w-4 h-4"
+                            stroke={themeStore.current === "light"
+                                ? "#62748E"
+                                : "#71717B"}
+                            fill="none"
+                        />
+                        <time
+                            class="text-body-sm text-muted-foreground"
+                            datetime={post.date}
+                        >
+                            {formatDate(post.date)}
+                        </time>
+                    </div>
+
+                    <span class="text-body-sm text-muted-foreground">
+                        {post.readingTime} read
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    {#each post.tags as tag}
+                        <button
+                            type="button"
+                            onclick={(e) => handleTagClick(e, tag)}
+                        >
+                            <Badge
+                                variant="secondary"
+                                class="px-2 py-1 text-caption rounded-lg cursor-pointer hover:bg-secondary/80"
+                            >
+                                {tag}
+                            </Badge>
+                        </button>
+                    {/each}
+                </div>
             </div>
-
-            <span
-                class="font-normal text-[14px] leading-5 text-muted-foreground tracking-[-0.15px]"
-            >
-                {post.readingTime} read
-            </span>
-        </div>
-
-        <div class="flex items-center gap-2">
-            {#each post.tags as tag}
-                <button
-                    type="button"
-                    onclick={(e) => handleTagClick(e, tag)}
-                    class="bg-secondary text-secondary-foreground text-[12px] leading-4 px-2 py-1 rounded-lg hover:bg-secondary/80 transition-colors"
-                >
-                    {tag}
-                </button>
-            {/each}
-        </div>
-    </div>
+        </CardContent>
+    </Card>
 </a>

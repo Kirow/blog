@@ -1,8 +1,10 @@
 <script lang="ts">
     import ArticleCard from "$lib/components/ArticleCard.svelte";
     import Header from "$lib/components/Header.svelte";
+    import Footer from "$lib/components/Footer.svelte";
     import LeftSidebar from "$lib/components/LeftSidebar.svelte";
     import RightSidebar from "$lib/components/RightSidebar.svelte";
+    import { Card, CardContent } from "$lib/components/ui/card";
 
     let { data } = $props();
 
@@ -33,10 +35,10 @@
     }
 </script>
 
-<div class="min-h-screen bg-background">
+<div class="min-h-screen bg-background flex flex-col">
     <Header />
 
-    <div class="px-14 py-8">
+    <div class="flex-1 px-14 py-8">
         <div class="flex gap-6">
             <!-- Left Sidebar -->
             <LeftSidebar />
@@ -49,13 +51,13 @@
                     {/each}
 
                     {#if filteredPosts.length === 0}
-                        <div
-                            class="bg-card border border-border rounded-[10px] px-6 py-12 text-center"
-                        >
-                            <p class="text-muted-foreground">
-                                No articles found matching "{searchTerm}"
-                            </p>
-                        </div>
+                        <Card class="rounded-[10px] py-0">
+                            <CardContent class="px-6 py-12 text-center">
+                                <p class="text-body text-muted-foreground">
+                                    No articles found matching "{searchTerm}"
+                                </p>
+                            </CardContent>
+                        </Card>
                     {/if}
                 </div>
             </main>
@@ -69,4 +71,6 @@
             />
         </div>
     </div>
+
+    <Footer />
 </div>

@@ -4,6 +4,7 @@
     import { Icon } from "svelte-icon";
     import warningIcon from "$lib/assets/404-warning.svg?raw";
     import homeIcon from "$lib/assets/home.svg?raw";
+    import { Button } from "$lib/components/ui/button";
     // required? to apply correct styles based on the current theme
     import { themeStore } from "$lib/stores/theme.svelte";
 </script>
@@ -28,34 +29,25 @@
     </div>
 
     <!-- Error Status -->
-    <h1
-        class="text-muted-foreground mb-4 text-2xl font-medium tracking-[0.07px]"
-    >
+    <h1 class="text-heading-1 text-muted-foreground mb-4">
         {page.status}
     </h1>
 
     <!-- Error Title -->
-    <h2
-        class="text-muted-foreground mb-2 text-xl font-medium tracking-[-0.45px]"
-    >
+    <h2 class="text-heading-2 text-muted-foreground mb-2">
         {page.status === 404 ? "Page Not Found" : "Something Went Wrong"}
     </h2>
 
     <!-- Description -->
-    <p
-        class="text-secondary-foreground mb-8 text-center text-base tracking-[-0.31px]"
-    >
+    <p class="text-body text-secondary-foreground mb-8 text-center">
         {page.status === 404
             ? "Sorry, the page you're looking for doesn't exist or has been moved."
             : "An unexpected error occurred. Please try again later."}
     </p>
 
     <!-- Button -->
-    <a
-        href={resolve("/")}
-        class="bg-primary text-primary-foreground flex h-12 items-center gap-2 rounded-lg px-6 tracking-[-0.31px] transition-opacity hover:opacity-90"
-    >
+    <Button href={resolve("/")} size="lg" class="gap-2">
         <Icon data={homeIcon} fill="none" stroke="var(--primary-foreground)" />
-        <span class="text-base font-medium">Back to Home</span>
-    </a>
+        <span class="text-body font-medium">Back to Home</span>
+    </Button>
 </div>

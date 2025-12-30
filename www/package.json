@@ -19,6 +19,7 @@
 		"mdsvex": "^0.12.6",
 		"svelte": "^5.45.6",
 		"svelte-check": "^4.3.4",
+		"tailwind-variants": "^3.2.2",
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5.9.3",
 		"vite": "^7.2.6"
