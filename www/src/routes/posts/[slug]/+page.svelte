@@ -6,21 +6,27 @@
     import { Badge } from "$lib/components/ui/badge";
     import Header from "$lib/components/Header.svelte";
     import Footer from "$lib/components/Footer.svelte";
-    import { page } from "$app/stores";
+    import { page } from "$app/state";
     import type { Component } from "svelte";
 
     let { data } = $props();
 
-    // Reactive state for post content
-    let content = $state<Component | null>(data.content);
-    let meta = $state(data.meta);
+    // Reactive state for post content - derive initial values from data prop
+    let contentOverride = $state<Component | null>(null);
+    let metaOverride = $state<typeof data.meta | null>(null);
+
+    // Use overrides if set (from language switch), otherwise use data from load
+    let content = $derived(contentOverride ?? data.content);
+    let meta = $derived(metaOverride ?? data.meta);
 
     // Re-load post when language changes
     $effect(() => {
         const lang = languageStore.current;
-        const slug = $page.params.slug;
+        const slug = page.params.slug;
 
-        loadPost(slug, lang);
+        if (slug) {
+            loadPost(slug, lang);
+        }
     });
 
     async function loadPost(slug: string, lang: "en" | "ua") {
@@ -31,8 +37,8 @@
                 const post = await import(
                     `../../../posts/${slug}.${tryLang}.md`
                 );
-                content = post.default;
-                meta = post.metadata;
+                contentOverride = post.default;
+                metaOverride = post.metadata;
                 return;
             } catch {
                 // Try next language
@@ -42,8 +48,8 @@
         // Fallback: try without language suffix (for legacy files)
         try {
             const post = await import(`../../../posts/${slug}.md`);
-            content = post.default;
-            meta = post.metadata;
+            contentOverride = post.default;
+            metaOverride = post.metadata;
         } catch {
             // Keep existing content if nothing found
         }

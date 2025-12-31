@@ -3,17 +3,20 @@
     import LanguageToggle from "./LanguageToggle.svelte";
     import { t } from "$lib/i18n";
     import { Button } from "$lib/components/ui/button";
-    import { resolve } from "$app/paths";
-    import { page } from "$app/stores";
+    import { base, resolve } from "$app/paths";
+    import { page } from "$app/state";
 
     // Reactive tagline based on language
     let tagline = $derived(t("header.tagline"));
     let backLabel = $derived(t("buttons.back-to-home"));
+
+    // Check if we're on a post page, accounting for the base path
+    let isPostPage = $derived(page.url.pathname.startsWith(`${base}/posts/`));
 </script>
 
 <header class="bg-card border-b border-border">
     <div class="px-14 pt-8 pb-8">
-        {#if $page.url.pathname.startsWith("/posts/")}
+        {#if isPostPage}
             <!-- Compact header for article pages: back on left, toggles on right -->
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
@@ -33,11 +36,11 @@
                 </div>
             </div>
         {:else}
-            <div class="flex items-start justify-between">
-                <!-- Logo and tagline -->
-                <div class="flex flex-col">
+            <div class="flex items-center justify-between">
+                <!-- Logo and tagline (single-line) -->
+                <div class="flex items-center gap-3 min-w-0">
                     <h1 class="text-heading-1 text-foreground">TechBlog</h1>
-                    <p class="text-body text-muted-foreground">
+                    <p class="text-body text-muted-foreground truncate">
                         {tagline}
                     </p>
                 </div>
