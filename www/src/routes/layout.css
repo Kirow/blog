@@ -7,14 +7,30 @@
 :root .shiki,
 :root .shiki span {
     color: var(--shiki-light) !important;
+}
+
+:root .shiki {
     background-color: var(--shiki-light-bg) !important;
+}
+
+/* Remove background from individual tokens */
+:root .shiki span {
+    background-color: transparent !important;
 }
 
 /* Dark mode: show github-dark theme, hide github-light */
 .dark .shiki,
 .dark .shiki span {
     color: var(--shiki-dark) !important;
+}
+
+.dark .shiki {
     background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Remove background from individual tokens */
+.dark .shiki span {
+    background-color: transparent !important;
 }
 
 /* Code block container styling */
