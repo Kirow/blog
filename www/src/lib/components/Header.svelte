@@ -1,6 +1,10 @@
 <script lang="ts">
     import ThemeToggle from "./ThemeToggle.svelte";
     import LanguageToggle from "./LanguageToggle.svelte";
+    import { t } from "$lib/i18n";
+
+    // Reactive tagline based on language
+    let tagline = $derived(t("header.tagline"));
 </script>
 
 <header class="bg-card border-b border-border">
@@ -10,7 +14,7 @@
             <div class="flex flex-col">
                 <h1 class="text-heading-1 text-foreground">TechBlog</h1>
                 <p class="text-body text-muted-foreground">
-                    Insights on modern web development
+                    {tagline}
                 </p>
             </div>
 

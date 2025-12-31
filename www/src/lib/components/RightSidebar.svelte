@@ -11,6 +11,7 @@
     } from "$lib/components/ui/card";
     import { Input } from "$lib/components/ui/input";
     import { Badge } from "$lib/components/ui/badge";
+    import { t } from "$lib/i18n";
 
     type Props = {
         searchTerm: string;
@@ -27,13 +28,20 @@
         const target = event.target as HTMLInputElement;
         onSearch(target.value);
     }
+
+    // Reactive translations
+    let searchTitle = $derived(t("search.title"));
+    let searchPlaceholder = $derived(t("search.placeholder"));
+    let tagsTitle = $derived(t("tags.title"));
 </script>
 
 <aside class="w-sidebar-right shrink-0 flex flex-col gap-6">
     <!-- Search Section -->
     <Card class="rounded-[10px] py-0 gap-0">
         <CardHeader class="px-4-25 pt-4-25 pb-3">
-            <CardTitle class="text-heading-3 text-foreground">Search</CardTitle>
+            <CardTitle class="text-heading-3 text-foreground"
+                >{searchTitle}</CardTitle
+            >
         </CardHeader>
         <CardContent class="px-4-25 pb-4-25 pt-0">
             <div class="relative">
@@ -51,7 +59,7 @@
                 </div>
                 <Input
                     type="text"
-                    placeholder="Search articles..."
+                    placeholder={searchPlaceholder}
                     value={inputValue}
                     oninput={handleInput}
                     class="pl-9 h-9.5 rounded-[10px] bg-secondary"
@@ -73,7 +81,7 @@
                     fill="none"
                 />
                 <CardTitle class="text-heading-3 text-foreground">
-                    Tags
+                    {tagsTitle}
                 </CardTitle>
             </div>
         </CardHeader>

@@ -6,6 +6,7 @@
     import { themeStore } from "$lib/stores/theme.svelte";
     import { Card, CardContent } from "$lib/components/ui/card";
     import { Badge } from "$lib/components/ui/badge";
+    import { t, languageStore } from "$lib/i18n";
 
     type Props = {
         post: Post;
@@ -16,7 +17,8 @@
 
     function formatDate(dateString: string): string {
         const date = new Date(dateString);
-        return date.toLocaleDateString("en-US", {
+        const locale = languageStore.current === "ua" ? "uk-UA" : "en-US";
+        return date.toLocaleDateString(locale, {
             month: "short",
             day: "numeric",
             year: "numeric",
@@ -28,6 +30,8 @@
         event.stopPropagation();
         onTagClick?.(tag);
     }
+
+    let readingTimeLabel = $derived(t("blog.reading-time"));
 </script>
 
 <a href={resolve(`/posts/${post.slug}`)} class="block group">
@@ -63,7 +67,7 @@
                     </div>
 
                     <span class="text-body-sm text-muted-foreground">
-                        {post.readingTime} read
+                        {post.readingTime} {readingTimeLabel}
                     </span>
                 </div>
 

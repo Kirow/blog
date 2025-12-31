@@ -3,16 +3,17 @@
     import { resolve } from "$app/paths";
     import { Card, CardContent } from "$lib/components/ui/card";
     import { Button } from "$lib/components/ui/button";
+    import { t } from "$lib/i18n";
 
     type NavItem = {
-        label: string;
+        labelKey: "nav.home" | "nav.about" | "nav.contacts";
         href: string;
     };
 
     const navItems: NavItem[] = [
-        { label: "Home", href: resolve("/") },
-        { label: "About", href: resolve("/about") },
-        { label: "Contacts", href: resolve("/contacts") },
+        { labelKey: "nav.home", href: resolve("/") },
+        { labelKey: "nav.about", href: resolve("/about") },
+        { labelKey: "nav.contacts", href: resolve("/contacts") },
     ];
 
     function isActive(href: string, currentPath: string): boolean {
@@ -34,7 +35,7 @@
                     {#each navItems as item}
                         {@const active = isActive(
                             item.href,
-                            $page.url.pathname,
+                            $page.url.pathname
                         )}
                         <li>
                             <Button
@@ -44,7 +45,7 @@
                                     ? 'bg-accent dark:bg-sidebar-accent dark:text-sidebar-accent-foreground text-foreground font-medium hover:bg-accent/90 dark:hover:bg-sidebar-accent'
                                     : 'text-muted-foreground hover:text-foreground'}"
                             >
-                                {item.label}
+                                {t(item.labelKey)}
                             </Button>
                         </li>
                     {/each}

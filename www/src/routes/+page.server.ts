@@ -1,6 +1,6 @@
-import { getPosts } from '$lib/posts';
+import { getAllPosts } from "$lib/posts";
 
 export const load = async () => {
-	const posts = await getPosts();
-	return { posts };
+  const allPosts = await getAllPosts();
+  return { allPosts };
 };

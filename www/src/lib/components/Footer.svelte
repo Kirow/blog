@@ -5,6 +5,7 @@
     import twitter from "$lib/assets/twitter.svg?raw";
     import { themeStore } from "$lib/stores/theme.svelte";
     import { Button } from "$lib/components/ui/button";
+    import { t } from "$lib/i18n";
 
     type SocialLink = {
         name: string;
@@ -31,6 +32,8 @@
     ];
 
     const currentYear = new Date().getFullYear();
+
+    let copyright = $derived(t("footer.copyright"));
 </script>
 
 <footer class="bg-card border-t border-border">
@@ -38,7 +41,7 @@
         <div class="flex items-center justify-between">
             <!-- Copyright -->
             <p class="text-body-sm text-muted-foreground">
-                © {currentYear} TechBlog. All rights reserved.
+                © {currentYear} TechBlog. {copyright}.
             </p>
 
             <!-- Social Links -->

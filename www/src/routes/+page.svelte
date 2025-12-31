@@ -5,26 +5,34 @@
     import LeftSidebar from "$lib/components/LeftSidebar.svelte";
     import RightSidebar from "$lib/components/RightSidebar.svelte";
     import { Card, CardContent } from "$lib/components/ui/card";
+    import { filterPostsByLanguage, getAllTags } from "$lib/posts";
+    import { languageStore, t } from "$lib/i18n";
 
     let { data } = $props();
 
     let searchTerm = $state("");
 
+    // Filter posts by current language (reactive to language changes)
+    let posts = $derived(
+        filterPostsByLanguage(data.allPosts, languageStore.current)
+    );
+
     let filteredPosts = $derived(
-        data.posts.filter((post) => {
+        posts.filter((post) => {
             const term = searchTerm.toLowerCase();
             const matchesTitle = post.title.toLowerCase().includes(term);
             const matchesTags = post.tags.some((tag) =>
-                tag.toLowerCase().includes(term),
+                tag.toLowerCase().includes(term)
             );
             return matchesTitle || matchesTags;
-        }),
+        })
     );
 
-    // Extract all unique tags from posts
-    let allTags = $derived(
-        [...new Set(data.posts.flatMap((post) => post.tags))].sort(),
-    );
+    // Extract all unique tags from current language posts
+    let allTags = $derived(getAllTags(posts));
+
+    // Reactive translation for no results message
+    let noResultsMessage = $derived(t("search.no-results"));
 
     function setTag(tag: string) {
         searchTerm = tag;
@@ -54,7 +62,10 @@
                         <Card class="rounded-[10px] py-0">
                             <CardContent class="px-6 py-12 text-center">
                                 <p class="text-body text-muted-foreground">
-                                    No articles found matching "{searchTerm}"
+                                    {noResultsMessage}
+                                    {#if searchTerm}
+                                        : "{searchTerm}"
+                                    {/if}
                                 </p>
                             </CardContent>
                         </Card>
