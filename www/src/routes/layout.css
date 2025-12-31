@@ -266,3 +266,9 @@
         font-weight: var(--font-weight-medium);
     }
 }
+
+/* Disable transitions during theme switch */
+.no-transition,
+.no-transition * {
+    transition: none !important;
+}
