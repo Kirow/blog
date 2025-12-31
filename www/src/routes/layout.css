@@ -44,11 +44,17 @@
 
 /* Ensure proper background colors */
 :root .shiki {
-    background-color: #f6f8fa !important; /* github-light bg */
+    background-color: var(
+        --shiki-light-bg,
+        #f6f8fa
+    ) !important; /* github-light bg */
 }
 
 .dark .shiki {
-    background-color: #0d1117 !important; /* github-dark bg */
+    background-color: var(
+        --shiki-dark-bg,
+        #0d1117
+    ) !important; /* github-dark bg */
 }
 
 @theme inline {
@@ -80,6 +86,14 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+    /* Icon colors */
+    --color-icon-muted: var(--icon-muted);
+    --color-icon-secondary: var(--icon-secondary);
+    /* Semantic colors */
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    /* Code background */
+    --color-code-bg: var(--code-bg);
 
     /* Border radius tokens */
     --radius-sm: calc(var(--radius) - 4px);
@@ -189,6 +203,14 @@
     --sidebar-accent-foreground: #0f172b;
     --sidebar-border: #e2e8f0;
     --sidebar-ring: #0f172b;
+    /* Icon colors */
+    --icon-muted: #90a1b9; /* lighter muted for search icon */
+    --icon-secondary: #45556c; /* for tag icons */
+    /* Semantic colors */
+    --success: #22c55e; /* green-500 */
+    --warning: #fdc700; /* yellow for sun icon */
+    /* Code background */
+    --code-bg: #e2e8f0; /* slate-200 for inline code */
 }
 
 .dark {
@@ -221,6 +243,14 @@
     --sidebar-accent-foreground: #09090b;
     --sidebar-border: #27272a;
     --sidebar-ring: #ffffff;
+    /* Icon colors */
+    --icon-muted: #71717b; /* zinc-500 */
+    --icon-secondary: #9f9fa9; /* lighter zinc for tag icons */
+    /* Semantic colors */
+    --success: #22c55e; /* green-500 */
+    --warning: #fdc700; /* yellow for sun icon */
+    /* Code background */
+    --code-bg: #27272a; /* zinc-800 for inline code */
 }
 
 @layer base {

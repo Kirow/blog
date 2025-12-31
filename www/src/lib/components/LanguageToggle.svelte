@@ -8,7 +8,7 @@
     size="icon"
     onclick={() => languageStore.toggle()}
     aria-label="Toggle language"
-    class="hover:bg-sky-200 hover:text-foreground hover:shadow-md dark:hover:bg-accent/20 focus-visible:ring-2 focus-visible:ring-accent/60 transition-all"
+    class="hover:bg-accent hover:text-foreground hover:shadow-md dark:hover:bg-accent/20 focus-visible:ring-2 focus-visible:ring-accent/60 transition-all"
 >
     {languageStore.current.toUpperCase()}
 </Button>

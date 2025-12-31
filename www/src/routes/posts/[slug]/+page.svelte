@@ -1,7 +1,6 @@
 <script lang="ts">
     import { Icon } from "svelte-icon";
     import calendar from "$lib/assets/calendar.svg?raw";
-    import { themeStore } from "$lib/stores/theme.svelte";
     import { languageStore } from "$lib/i18n";
     import { Badge } from "$lib/components/ui/badge";
     import Header from "$lib/components/Header.svelte";
@@ -143,10 +142,8 @@
                     <div class="flex items-center gap-1.5">
                         <Icon
                             data={calendar}
-                            class="w-4 h-4"
-                            stroke={themeStore.current === "light"
-                                ? "#62748E"
-                                : "#71717B"}
+                            class="w-4 h-4 text-muted-foreground"
+                            stroke="currentColor"
                             fill="none"
                         />
                         <time
@@ -322,7 +319,7 @@
 
     /* Inline code */
     .prose-content :global(code:not(pre code)) {
-        background-color: #e2e8f0; /* slate-200 for better contrast in light mode */
+        background-color: var(--code-bg);
         color: var(--foreground);
         padding: 0.2em 0.4em;
         border-radius: 0.25rem;
@@ -331,10 +328,6 @@
             ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
             "Liberation Mono", monospace;
         word-break: break-word;
-    }
-
-    :global(.dark) .prose-content :global(code:not(pre code)) {
-        background-color: var(--muted); /* Keep original for dark mode */
     }
 
     /* Code blocks - Shiki integration */
@@ -493,10 +486,10 @@
 
     .prose-content :global(.copy-button.copied .check-icon) {
         display: block;
-        color: #22c55e;
+        color: var(--success);
     }
 
     .prose-content :global(.copy-button.copied) {
-        border-color: #22c55e;
+        border-color: var(--success);
     }
 </style>

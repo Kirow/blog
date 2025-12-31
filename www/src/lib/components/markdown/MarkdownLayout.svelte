@@ -163,7 +163,7 @@
 
     /* Inline code */
     .prose-content :global(code:not(pre code)) {
-        background-color: #e2e8f0; /* slate-200 for better contrast in light mode */
+        background-color: var(--code-bg);
         color: var(--foreground);
         padding: 0.2em 0.4em;
         border-radius: 0.25rem;
@@ -171,10 +171,6 @@
         font-family:
             ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
             "Liberation Mono", monospace;
-    }
-
-    :global(.dark) .prose-content :global(code:not(pre code)) {
-        background-color: var(--muted); /* Keep original for dark mode */
     }
 
     /* Code blocks */

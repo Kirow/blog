@@ -3,7 +3,6 @@
     import type { Post } from "$lib/posts";
     import { Icon } from "svelte-icon";
     import calendar from "$lib/assets/calendar.svg?raw";
-    import { themeStore } from "$lib/stores/theme.svelte";
     import { Card, CardContent } from "$lib/components/ui/card";
     import { Badge } from "$lib/components/ui/badge";
     import { t, languageStore } from "$lib/i18n";
@@ -52,10 +51,8 @@
                     <div class="flex items-center gap-1.5">
                         <Icon
                             data={calendar}
-                            class="w-4 h-4"
-                            stroke={themeStore.current === "light"
-                                ? "#62748E"
-                                : "#71717B"}
+                            class="w-4 h-4 text-muted-foreground"
+                            stroke="currentColor"
                             fill="none"
                         />
                         <time
@@ -67,7 +64,8 @@
                     </div>
 
                     <span class="text-body-sm text-muted-foreground">
-                        {post.readingTime} {readingTimeLabel}
+                        {post.readingTime}
+                        {readingTimeLabel}
                     </span>
                 </div>
 

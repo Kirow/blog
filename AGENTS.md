@@ -65,3 +65,4 @@ $effect(() => {
 - Use **dashes** for decimal spacing: `px-4-25` not `px-4.25`
 - Custom tokens defined in `www/src/routes/layout.css` (`--spacing-*`)
 - Use `w-sidebar-right` instead of arbitrary widths like `w-70`
+- **Never hardcode colors.** Use theme tokens from `www/src/routes/layout.css`.

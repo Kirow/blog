@@ -24,7 +24,7 @@
                         href={resolve("/")}
                         variant="secondary"
                         aria-label="Back to home"
-                        class="hover:bg-sky-200 hover:text-foreground hover:shadow-md dark:hover:bg-accent/20 focus-visible:ring-2 focus-visible:ring-accent/60 transition-all"
+                        class="hover:bg-accent hover:text-foreground hover:shadow-md dark:hover:bg-accent/20 focus-visible:ring-2 focus-visible:ring-accent/60 transition-all"
                     >
                         ← {backLabel}
                     </Button>

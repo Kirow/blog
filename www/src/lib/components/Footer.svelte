@@ -3,7 +3,6 @@
     import github from "$lib/assets/github.svg?raw";
     import linkedin from "$lib/assets/linkedin.svg?raw";
     import twitter from "$lib/assets/twitter.svg?raw";
-    import { themeStore } from "$lib/stores/theme.svelte";
     import { Button } from "$lib/components/ui/button";
     import { t } from "$lib/i18n";
 
@@ -58,9 +57,7 @@
                         <Icon
                             data={link.icon}
                             class="size-5 text-secondary-foreground"
-                            stroke={themeStore.current === "light"
-                                ? "#314158"
-                                : "#D4D4D8"}
+                            stroke="currentColor"
                             fill="none"
                         />
                     </Button>

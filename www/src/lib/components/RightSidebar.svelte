@@ -2,7 +2,6 @@
     import { Icon } from "svelte-icon";
     import search from "$lib/assets/search.svg?raw";
     import tagIcon from "$lib/assets/tag.svg?raw";
-    import { themeStore } from "$lib/stores/theme.svelte";
     import {
         Card,
         CardContent,
@@ -50,10 +49,8 @@
                 >
                     <Icon
                         data={search}
-                        class="size-4 text-muted-foreground"
-                        stroke={themeStore.current === "light"
-                            ? "#90A1B9"
-                            : "#71717B"}
+                        class="size-4 text-icon-muted"
+                        stroke="currentColor"
                         fill="none"
                     />
                 </div>
@@ -74,10 +71,8 @@
             <div class="flex items-center gap-2">
                 <Icon
                     data={tagIcon}
-                    class="size-4 text-foreground"
-                    stroke={themeStore.current === "light"
-                        ? "#45556C"
-                        : "#9F9FA9"}
+                    class="size-4 text-icon-secondary"
+                    stroke="currentColor"
                     fill="none"
                 />
                 <CardTitle class="text-heading-3 text-foreground">
