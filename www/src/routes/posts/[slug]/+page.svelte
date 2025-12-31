@@ -11,6 +11,64 @@
 
     let { data } = $props();
 
+    // Reference to the article content for adding copy buttons
+    let articleRef = $state<HTMLElement | null>(null);
+
+    // Add copy buttons to all code blocks after content renders
+    $effect(() => {
+        if (articleRef && content) {
+            // Small delay to ensure content is rendered
+            requestAnimationFrame(() => {
+                addCopyButtons();
+            });
+        }
+    });
+
+    function addCopyButtons() {
+        if (!articleRef) return;
+
+        const codeBlocks = articleRef.querySelectorAll("pre");
+
+        codeBlocks.forEach((pre) => {
+            // Skip if already has a copy button
+            if (pre.querySelector(".copy-button")) return;
+
+            // Make pre position relative for absolute positioning of button
+            pre.style.position = "relative";
+
+            // Create copy button
+            const button = document.createElement("button");
+            button.className = "copy-button";
+            button.setAttribute("aria-label", "Copy code");
+            button.innerHTML = `
+                <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            `;
+
+            button.addEventListener("click", async () => {
+                const code = pre.querySelector("code");
+                const text = code?.textContent || pre.textContent || "";
+
+                try {
+                    await navigator.clipboard.writeText(text);
+                    button.classList.add("copied");
+                    setTimeout(() => {
+                        button.classList.remove("copied");
+                    }, 2000);
+                } catch (err) {
+                    console.error("Failed to copy:", err);
+                }
+            });
+
+            pre.appendChild(button);
+        });
+    }
+
     // Reactive state for post content - derive initial values from data prop
     let contentOverride = $state<Component | null>(null);
     let metaOverride = $state<typeof data.meta | null>(null);
@@ -125,7 +183,7 @@
             </header>
 
             <!-- Article Content -->
-            <article class="prose-content">
+            <article class="prose-content" bind:this={articleRef}>
                 {#if content}
                     {@const Content = content}
                     <Content />
@@ -264,7 +322,7 @@
 
     /* Inline code */
     .prose-content :global(code:not(pre code)) {
-        background-color: var(--muted);
+        background-color: #e2e8f0; /* slate-200 for better contrast in light mode */
         color: var(--foreground);
         padding: 0.2em 0.4em;
         border-radius: 0.25rem;
@@ -273,6 +331,10 @@
             ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
             "Liberation Mono", monospace;
         word-break: break-word;
+    }
+
+    :global(.dark) .prose-content :global(code:not(pre code)) {
+        background-color: var(--muted); /* Keep original for dark mode */
     }
 
     /* Code blocks - Shiki integration */
@@ -372,5 +434,69 @@
         border: 1px solid var(--border);
         border-radius: 0.25rem;
         box-shadow: 0 1px 0 var(--border);
+    }
+
+    /* Copy button for code blocks */
+    .prose-content :global(.copy-button) {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.375rem;
+        background-color: var(--muted);
+        border: 1px solid var(--border);
+        border-radius: 0.375rem;
+        cursor: pointer;
+        opacity: 0;
+        transition:
+            opacity 0.15s ease,
+            background-color 0.15s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted-foreground);
+        outline: none;
+    }
+
+    .prose-content :global(.copy-button:active) {
+        border-color: var(--border);
+    }
+
+    .prose-content :global(pre:hover .copy-button) {
+        opacity: 1;
+    }
+
+    .prose-content :global(.copy-button:hover) {
+        background-color: var(--secondary);
+        color: var(--foreground);
+    }
+
+    .prose-content :global(.copy-button:focus) {
+        opacity: 1;
+    }
+
+    .prose-content :global(.copy-button:focus-visible) {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+
+    .prose-content :global(.copy-button .copy-icon) {
+        display: block;
+    }
+
+    .prose-content :global(.copy-button .check-icon) {
+        display: none;
+    }
+
+    .prose-content :global(.copy-button.copied .copy-icon) {
+        display: none;
+    }
+
+    .prose-content :global(.copy-button.copied .check-icon) {
+        display: block;
+        color: #22c55e;
+    }
+
+    .prose-content :global(.copy-button.copied) {
+        border-color: #22c55e;
     }
 </style>
