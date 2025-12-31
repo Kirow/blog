@@ -2,6 +2,39 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Shiki syntax highlighting theme switching */
+/* Light mode: show github-light theme, hide github-dark */
+:root .shiki,
+:root .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: var(--shiki-light-bg) !important;
+}
+
+/* Dark mode: show github-dark theme, hide github-light */
+.dark .shiki,
+.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Code block container styling */
+.shiki {
+    padding: 1rem;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+/* Ensure proper background colors */
+:root .shiki {
+    background-color: #f6f8fa !important; /* github-light bg */
+}
+
+.dark .shiki {
+    background-color: #0d1117 !important; /* github-dark bg */
+}
+
 @theme inline {
     /* Color tokens */
     --color-background: var(--background);

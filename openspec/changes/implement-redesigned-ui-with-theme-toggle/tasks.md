@@ -37,11 +37,11 @@
 - [x] 5.5 Set up separate markdown files per language for blog posts
 
 ## 6. Markdown Rendering
-- [ ] 6.1 Configure mdsvex with SvelteKit
-- [ ] 6.2 Set up custom mdsvex components for blog posts
-- [ ] 6.3 Implement syntax highlighting with Prism or Shiki
-- [ ] 6.4 Create custom layouts for different content types
-- [ ] 6.5 Test markdown rendering with existing posts
+- [x] 6.1 Configure mdsvex with SvelteKit
+- [x] 6.2 Set up custom mdsvex components for blog posts
+- [x] 6.3 Implement syntax highlighting with Prism or Shiki
+- [x] 6.4 Create custom layouts for different content types
+- [x] 6.5 Test markdown rendering with existing posts
 
 ## 7. Migration of Existing Features
 - [x] 7.1 Migrate blog post listing to new design
