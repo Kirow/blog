@@ -11,6 +11,7 @@
     size="icon"
     onclick={() => themeStore.toggle()}
     aria-label="Toggle theme"
+    class="hover:bg-sky-200 hover:text-foreground hover:shadow-md focus-visible:ring-2 focus-visible:ring-accent/60 transition-all dark:hover:bg-accent/20"
 >
     {#if themeStore.current === "light"}
         <Icon
