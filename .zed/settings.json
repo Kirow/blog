@@ -3,6 +3,17 @@
 // For a full list of overridable settings, and general information on folder-specific settings,
 // see the documentation: https://zed.dev/docs/configuring-zed#settings-files
 {
+  "context_servers": {
+    "FigmaMCP": {
+      "enabled": true,
+      "url": "http://127.0.0.1:3845/mcp",
+    },
+    "browsermcp": {
+      "enabled": true,
+      "command": "bunx",
+      "args": ["@browsermcp/mcp@latest"],
+    },
+  },
   "lsp": {
     "vscode-css-language-server": {
       "settings": {
