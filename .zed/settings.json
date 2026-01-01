@@ -15,6 +15,20 @@
     },
   },
   "lsp": {
+    "basedpyright": {
+      "settings": {
+        "basedpyright.analysis": {
+          "extraPaths": [
+            "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Resources/Python",
+          ],
+        },
+        "basedpyright.autoComplete": {
+          "extraPaths": [
+            "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Resources/Python",
+          ],
+        },
+      },
+    },
     "vscode-css-language-server": {
       "settings": {
         "css": {
